@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AgriNutri Ventures Ltd — Expert Animal Nutrition & Livestock Management Consultancy in Nairobi, Kenya. Led by Dr. Anderson N. Maina, PhD.">
+  <title>AgriNutri Ventures Ltd | Dr. Anderson N. Maina, PhD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ─────────────────────────────────────────────
+       ROOT VARIABLES
+    ───────────────────────────────────────────── */
+    :root {
+      --green-dark:   #1a3d2b;
+      --green-mid:    #2d6a4f;
+      --green-light:  #52b788;
+      --amber:        #d4a017;
+      --amber-light:  #f5cc5a;
+      --cream:        #fdf8f0;
+      --pale:         #f1ece0;
+      --charcoal:     #2c2c2c;
+      --muted:        #7a7a6e;
+      --white:        #ffffff;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Lato', sans-serif;
+      --radius:       5px;
+      --shadow:       0 8px 36px rgba(26,61,43,0.13);
+      --ease:         0.35s cubic-bezier(.4,0,.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--cream); color: var(--charcoal); line-height: 1.75; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.18; color: var(--green-dark); }
+    h1 { font-size: clamp(2.6rem, 5.5vw, 4.8rem); }
+    h2 { font-size: clamp(1.9rem, 3.8vw, 2.9rem); }
+    h3 { font-size: clamp(1.15rem, 2.2vw, 1.6rem); }
+    .lbl { font-family: var(--font-body); font-size: 0.73rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--amber); display: block; margin-bottom: .75rem; }
+    .container { width: min(1200px, 92%); margin-inline: auto; }
+    .section  { padding: 6rem 0; }
+    .alt  { background: var(--green-dark); color: var(--cream); }
+    .alt  h2, .alt h3 { color: var(--cream); }
+    .pale { background: var(--pale); }
+
+    /* ─────────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────────── */
+    #hdr { position: fixed; inset: 0 0 auto; z-index: 999; padding: 1.1rem 0; transition: background var(--ease), box-shadow var(--ease); }
+    #hdr.stuck { background: var(--green-dark); box-shadow: 0 2px 20px rgba(0,0,0,.3); }
+    .nav-wrap { display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; flex-direction: column; line-height: 1; }
+    .logo-n { font-family: var(--font-display); font-size: 1.42rem; font-weight: 700; color: var(--white); }
+    .logo-s { font-size: .6rem; letter-spacing: .15em; text-transform: uppercase; color: var(--amber-light); margin-top: 3px; }
+    .nav-ul { display: flex; list-style: none; gap: 2.4rem; }
+    .nav-ul a { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.82); transition: color var(--ease); position: relative; }
+    .nav-ul a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 2px; background: var(--amber); transform: scaleX(0); transition: transform var(--ease); }
+    .nav-ul a:hover { color: #fff; }
+    .nav-ul a:hover::after { transform: scaleX(1); }
+    .nav-cta { background: var(--amber) !important; color: var(--green-dark) !important; padding: .48rem 1.3rem; border-radius: var(--radius); font-weight: 900 !important; }
+    .nav-cta:hover { background: var(--amber-light) !important; }
+    .nav-cta::after { display: none !important; }
+
+    /* ─────────────────────────────────────────────
+       BUTTONS
+    ───────────────────────────────────────────── */
+    .btn { display: inline-flex; align-items: center; gap: .45rem; padding: .82rem 1.9rem; border-radius: var(--radius); font-weight: 700; font-size: .84rem; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; transition: all var(--ease); border: 2px solid transparent; }
+    .btn-p { background: var(--amber); color: var(--green-dark); border-color: var(--amber); }
+    .btn-p:hover { background: var(--amber-light); border-color: var(--amber-light); transform: translateY(-2px); box-shadow: 0 8px 22px rgba(212,160,23,.38); }
+    .btn-o { background: transparent; color: #fff; border-color: rgba(255,255,255,.45); }
+    .btn-o:hover { border-color: #fff; background: rgba(255,255,255,.08); transform: translateY(-2px); }
+    .btn-g { background: var(--green-mid); color: #fff; border-color: var(--green-mid); }
+    .btn-g:hover { background: var(--green-dark); border-color: var(--green-dark); transform: translateY(-2px); }
+
+    /* ─────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden;
+      background:
+        linear-gradient(155deg, rgba(16,42,28,.92) 0%, rgba(45,106,79,.72) 55%, rgba(16,42,28,.95) 100%),
+        url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1800&q=80') center/cover no-repeat;
+    }
+    #hero::after {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='.025'%3E%3Cpath d='M0 0h30v30H0zm30 30h30v30H30z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-in { position: relative; z-index: 2; max-width: 830px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(212,160,23,.18); border: 1px solid rgba(212,160,23,.5);
+      color: var(--amber-light); font-size: .73rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      padding: .38rem 1.1rem; border-radius: 99px; margin-bottom: 1.8rem;
+      animation: up .6s ease both;
+    }
+    #hero h1 { color: #fff; margin-bottom: 1.4rem; animation: up .7s .1s ease both; }
+    #hero h1 em { color: var(--amber-light); font-style: italic; }
+    .hero-p { font-size: 1.1rem; color: rgba(255,255,255,.8); max-width: 620px; margin-bottom: 2.3rem; animation: up .7s .2s ease both; line-height: 1.9; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: up .7s .3s ease both; }
+
+    /* ─────────────────────────────────────────────
+       STATS BAR
+    ───────────────────────────────────────────── */
+    .stats-bar { background: var(--green-dark); padding: 2.5rem 0; border-top: 3px solid var(--amber); }
+    .s-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 2rem; text-align: center; }
+    .s-num { font-family: var(--font-display); font-size: 3rem; font-weight: 700; color: var(--amber-light); display: block; line-height: 1; }
+    .s-lbl { font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.58); margin-top: .4rem; display: block; }
+
+    /* ─────────────────────────────────────────────
+       ABOUT — EXTENDED
+    ───────────────────────────────────────────── */
+    .about-grid { display: grid; grid-template-columns: 400px 1fr; gap: 5rem; align-items: start; }
+    .photo-col { position: sticky; top: 110px; }
+    .frame { position: relative; }
+    .frame::before {
+      content: ''; position: absolute; top: -18px; left: -18px;
+      width: 100%; height: 100%;
+      border: 3px solid var(--amber); border-radius: 6px; z-index: 0;
+    }
+    .frame img {
+      position: relative; z-index: 1; border-radius: 6px;
+      width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center;
+    }
+    .photo-cap { margin-top: 1.3rem; text-align: center; }
+    .photo-cap strong { font-family: var(--font-display); font-size: 1.2rem; color: var(--green-dark); display: block; }
+    .photo-cap span { font-size: .78rem; color: var(--muted); letter-spacing: .04em; }
+    .soc { display: flex; gap: .6rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap; }
+    .soc a {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      padding: .38rem .9rem; border-radius: 99px;
+      border: 1.5px solid var(--green-light); color: var(--green-mid);
+      transition: all var(--ease);
+    }
+    .soc a:hover { background: var(--green-mid); color: #fff; border-color: var(--green-mid); }
+
+    /* About text */
+    .about-text h2 { margin-bottom: .35rem; }
+    .about-sub { font-size: 1rem; color: var(--muted); font-style: italic; margin-bottom: 2rem; }
+    .about-text p { color: #555; margin-bottom: 1.2rem; font-size: 1.01rem; line-height: 1.88; }
+    .about-text p strong { color: var(--green-dark); }
+    .sec-ttl {
+      font-family: var(--font-display); font-size: 1.3rem; color: var(--green-dark);
+      margin: 2.2rem 0 1rem; padding-bottom: .35rem;
+      border-bottom: 2px solid var(--amber); display: inline-block;
+    }
+
+    /* Expertise chips */
+    .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; margin-bottom: 1.6rem; }
+    .exp-chip { background: #eef7f2; border-left: 3px solid var(--green-light); padding: .58rem .9rem; border-radius: 0 var(--radius) var(--radius) 0; font-size: .87rem; color: var(--green-dark); font-weight: 600; }
+
+    /* Timeline */
+    .tl { display: flex; flex-direction: column; gap: 0; margin-bottom: 1.6rem; }
+    .tl-item { display: flex; gap: 1.2rem; padding-bottom: 1.6rem; position: relative; }
+    .tl-item::before { content: ''; position: absolute; left: 14px; top: 30px; bottom: 0; width: 2px; background: #ddd; }
+    .tl-item:last-child::before { display: none; }
+    .tl-dot { width: 28px; height: 28px; background: var(--green-dark); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: .72rem; color: var(--amber-light); position: relative; z-index: 1; margin-top: 2px; }
+    .tl-yr { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--amber); display: block; margin-bottom: .15rem; }
+    .tl-role { font-family: var(--font-display); font-size: 1.05rem; color: var(--green-dark); font-weight: 600; display: block; }
+    .tl-place { font-size: .87rem; color: var(--muted); }
+
+    /* Credential list */
+    .cred { list-style: none; display: flex; flex-direction: column; gap: .8rem; margin-bottom: 1.6rem; }
+    .cred li { display: flex; align-items: flex-start; gap: .85rem; font-size: .96rem; color: var(--charcoal); line-height: 1.55; }
+    .cred-dot { width: 27px; height: 27px; background: var(--green-dark); color: var(--amber-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .72rem; flex-shrink: 0; margin-top: 2px; }
+
+    /* ─────────────────────────────────────────────
+       SERVICES
+    ───────────────────────────────────────────── */
+    .srv-intro { text-align: center; max-width: 660px; margin: 0 auto 4rem; }
+    .srv-intro p { color: rgba(255,255,255,.7); margin-top: 1rem; font-size: 1.03rem; }
+    .srv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px,1fr)); gap: 1.5rem; }
+    .srv-card {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 6px; padding: 2.2rem; position: relative; overflow: hidden;
+      transition: transform var(--ease), border-color var(--ease), background var(--ease);
+    }
+    .srv-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform var(--ease); }
+    .srv-card:hover { transform: translateY(-6px); border-color: rgba(212,160,23,.3); background: rgba(255,255,255,.1); }
+    .srv-card:hover::before { transform: scaleX(1); }
+    .srv-ic { font-size: 2.4rem; margin-bottom: 1.1rem; display: block; }
+    .srv-card h3 { color: #fff; margin-bottom: .7rem; font-size: 1.22rem; }
+    .srv-card p { color: rgba(255,255,255,.62); font-size: .9rem; line-height: 1.72; }
+    .tags { display: flex; flex-wrap: wrap; gap: .38rem; margin-top: 1.1rem; }
+    .tag { background: rgba(212,160,23,.14); color: var(--amber-light); font-size: .67rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .22rem .58rem; border-radius: 99px; border: 1px solid rgba(212,160,23,.22); }
+
+    /* ─────────────────────────────────────────────
+       WHY US
+    ───────────────────────────────────────────── */
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 2.5rem; margin-top: 3.5rem; }
+    .why-card { text-align: center; padding: 2rem 1.5rem; border-radius: 6px; transition: box-shadow var(--ease), transform var(--ease); }
+    .why-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
+    .why-ic { width: 72px; height: 72px; background: var(--green-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.9rem; margin: 0 auto 1.3rem; }
+    .why-card h3 { margin-bottom: .55rem; font-size: 1.12rem; }
+    .why-card p { color: var(--muted); font-size: .9rem; line-height: 1.72; }
+
+    /* ─────────────────────────────────────────────
+       PUBLICATIONS
+    ───────────────────────────────────────────── */
+    .pub-grid { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 2.5rem; }
+    .pub {
+      background: #fff; border-left: 4px solid var(--green-light);
+      padding: 1.4rem 1.8rem; border-radius: 0 6px 6px 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      transition: border-color var(--ease), transform var(--ease);
+    }
+    .pub:hover { border-color: var(--amber); transform: translateX(5px); }
+    .pub-jnl { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green-mid); margin-bottom: .3rem; }
+    .pub-ttl { font-family: var(--font-display); font-size: 1.1rem; color: var(--green-dark); margin-bottom: .28rem; line-height: 1.42; }
+    .pub-meta { font-size: .79rem; color: var(--muted); }
+    .pub-cta { text-align: center; margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ─────────────────────────────────────────────
+       CONTACT
+    ───────────────────────────────────────────── */
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1.55fr; gap: 5rem; align-items: start; }
+    .c-info h2 { margin-bottom: 1rem; }
+    .c-info > p { color: rgba(255,255,255,.7); margin-bottom: 1.8rem; font-size: 1rem; line-height: 1.85; }
+    .c-items { display: flex; flex-direction: column; gap: 1.1rem; margin-bottom: 1.8rem; }
+    .c-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .c-ic { width: 44px; height: 44px; background: rgba(255,255,255,.1); color: var(--amber); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .c-item strong { display: block; font-size: .73rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: 3px; }
+    .c-item span, .c-item a { font-size: .95rem; color: var(--cream); }
+    .c-item a:hover { color: var(--amber-light); }
+
+    /* Form card */
+    .c-form-card { background: #fff; padding: 2.8rem; border-radius: 6px; box-shadow: var(--shadow); }
+    .c-form-card h3 { font-family: var(--font-display); color: var(--green-dark); font-size: 1.5rem; margin-bottom: 1.5rem; }
+    .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .f-grp { margin-bottom: 1.1rem; display: flex; flex-direction: column; gap: .38rem; }
+    .f-grp label { font-size: .73rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+    .f-grp input, .f-grp select, .f-grp textarea {
+      padding: .78rem 1rem; border: 1.5px solid #e0ddd6; border-radius: var(--radius);
+      font-family: var(--font-body); font-size: .97rem; color: var(--charcoal);
+      background: var(--cream); outline: none; transition: border-color var(--ease);
+      width: 100%;
+    }
+    .f-grp input:focus, .f-grp select:focus, .f-grp textarea:focus { border-color: var(--green-mid); background: #fff; }
+    .f-grp textarea { resize: vertical; min-height: 130px; }
+    .full { grid-column: 1/-1; }
+    #success-msg { display: none; background: #2d6a4f; color: #fff; padding: 1.1rem 1.4rem; border-radius: var(--radius); margin-bottom: 1.4rem; font-weight: 700; font-size: .97rem; }
+
+    /* ─────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────── */
+    #ftr { background: #0d1810; color: rgba(255,255,255,.65); padding: 4.5rem 0 2.2rem; }
+    .ftr-grid { display: grid; grid-template-columns: 2.1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.07); margin-bottom: 2rem; }
+    .ftr-brand p { font-size: .88rem; line-height: 1.82; margin-top: .9rem; max-width: 340px; }
+    .ftr-col h4 { font-family: var(--font-display); font-size: 1.05rem; color: #fff; margin-bottom: 1.1rem; }
+    .ftr-col ul { list-style: none; display: flex; flex-direction: column; gap: .62rem; }
+    .ftr-col a { font-size: .85rem; color: rgba(255,255,255,.55); transition: color var(--ease); }
+    .ftr-col a:hover { color: var(--amber-light); }
+    .ftr-btm { display: flex; justify-content: space-between; align-items: center; font-size: .78rem; color: rgba(255,255,255,.32); flex-wrap: wrap; gap: .5rem; }
+
+    /* ─────────────────────────────────────────────
+       ANIMATIONS & REVEAL
+    ───────────────────────────────────────────── */
+    @keyframes up { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(34px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.on { opacity: 1; transform: none; }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 1060px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .photo-col { position: static; }
+      .frame img { aspect-ratio: 4/3; }
+    }
+    @media (max-width: 900px) {
+      .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
+      .ftr-grid { grid-template-columns: 1fr 1fr; }
+      .nav-ul { display: none; }
+      .f-row { grid-template-columns: 1fr; }
+      .exp-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .ftr-grid { grid-template-columns: 1fr; }
+      .s-grid { grid-template-columns: 1fr 1fr; }
+      .c-form-card { padding: 2rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     NAV
+═══════════════════════════════════════ -->
+<header id="hdr">
+  <div class="container nav-wrap">
+    <a href="#" class="logo">
+      <span class="logo-n">AgriNutri Ventures</span>
+      <span class="logo-s">Animal Nutrition Consultancy · Kenya</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-ul">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#publications">Research</a></li>
+        <li><a href="#contact" class="nav-cta">Get Consultation</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section id="hero">
+  <div class="container hero-in">
+    <div class="hero-badge">🌿 Nairobi, Kenya &mdash; Science-Driven Livestock Nutrition</div>
+    <h1>Precision Nutrition for <em>Thriving Livestock</em></h1>
+    <p class="hero-p">
+      AgriNutri Ventures Ltd is a premier animal nutrition and agribusiness consultancy led by
+      <strong style="color:var(--amber-light)">Dr. Anderson N. Maina, PhD</strong> — a globally
+      trained animal bioscientist with doctoral training from the University of Guelph (Canada),
+      postdoctoral experience in South Africa, and over 13 peer-reviewed publications spanning
+      poultry, swine, aquaculture and ruminant nutrition. We translate rigorous science into
+      measurable on-farm results across Kenya and East Africa.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-p">Request Consultation ↗</a>
+      <a href="#about"   class="btn btn-o">Meet Dr. Maina</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     STATS
+═══════════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="container s-grid">
+    <div class="reveal"><span class="s-num">13+</span><span class="s-lbl">Peer-Reviewed Publications</span></div>
+    <div class="reveal"><span class="s-num">4</span><span class="s-lbl">Livestock Species Covered</span></div>
+    <div class="reveal"><span class="s-num">10+</span><span class="s-lbl">Years Research Experience</span></div>
+    <div class="reveal"><span class="s-num">3</span><span class="s-lbl">Academic Institutions</span></div>
+    <div class="reveal"><span class="s-num">2</span><span class="s-lbl">Continents of Research</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     ABOUT — EXTENDED
+═══════════════════════════════════════ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- Photo Column -->
+      <div class="photo-col reveal">
+        <div class="frame">
+          <!--
+          ╔════════════════════════════════════════════════════════════╗
+          ║  HOW TO ADD YOUR REAL PHOTO (2 easy options):             ║
+          ║                                                            ║
+          ║  OPTION A — Use a direct image URL:                       ║
+          ║  1. Go to your ResearchGate profile                       ║
+          ║  2. Right-click your profile photo → "Open image in       ║
+          ║     new tab"                                               ║
+          ║  3. Copy the URL from the address bar                     ║
+          ║  4. Replace the src value below with that URL             ║
+          ║                                                            ║
+          ║  OPTION B — Upload to GitHub:                             ║
+          ║  1. Save your photo as photo.jpg                          ║
+          ║  2. Upload it to the same GitHub repo as index.html       ║
+          ║  3. Change src below to: src="photo.jpg"                  ║
+          ╚════════════════════════════════════════════════════════════╝
+          -->
+          <img
+            src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=600&q=80"
+            alt="Dr. Anderson N. Maina PhD — Principal Consultant, AgriNutri Ventures Ltd"
+          >
+        </div>
+        <div class="photo-cap">
+          <strong>Dr. Anderson N. Maina, PhD</strong>
+          <span>Principal Consultant &amp; Managing Director</span>
+        </div>
+        <div class="soc">
+          <a href="https://www.researchgate.net/profile/Anderson-Maina-2" target="_blank" rel="noopener">🔬 ResearchGate</a>
+          <a href="https://scholar.google.com/citations?user=169XcfoAAAAJ" target="_blank" rel="noopener">🎓 Google Scholar</a>
+        </div>
+      </div>
+
+      <!-- Extended Biography -->
+      <div class="about-text reveal">
+        <span class="lbl">About the Principal Consultant</span>
+        <h2>Dr. Anderson N. Maina, PhD</h2>
+        <p class="about-sub">Animal Bioscientist · Lecturer · Managing Director, AgriNutri Ventures Ltd</p>
+
+        <p>
+          Dr. Anderson N. Maina is a distinguished <strong>animal nutritionist and bioscientist</strong>
+          with a decade-long career spanning rigorous doctoral research, internationally recognised
+          postdoctoral training, academic teaching, and applied consultancy across Kenya, Canada,
+          and South Africa. He is the <strong>Managing Director and Chief Scientist</strong> of
+          AgriNutri Ventures Ltd — a livestock and agribusiness consultancy headquartered in Kenya —
+          and holds part-time academic appointments at <strong>Murang'a University of Technology</strong>
+          (Department of Plant and Animal Sciences) and <strong>JKUAT</strong>.
+        </p>
+
+        <p>
+          He earned his <strong>PhD in Animal Biosciences from the University of Guelph, Canada</strong>,
+          under the mentorship of Prof. Elijah G. Kiarie, where his doctoral research generated
+          foundational comparative data on specialty protein ingredients in broiler starter feeding
+          programmes, informing both commercial and scientific practice in the global poultry industry.
+          His doctoral work examined the impact of partial soybean meal replacement with select specialty
+          protein ingredients on lifetime growth performance, organ weights, intestinal morphology, plasma
+          biochemistry, and litter attributes in broiler chickens.
+        </p>
+
+        <p>
+          Following his doctorate, Dr. Maina completed <strong>postdoctoral research at North-West
+          University, South Africa</strong> (Food Security and Safety Niche Area, Faculty of Natural and
+          Agricultural Sciences), further broadening his expertise in <strong>eubiotics, nutri-epigenetics,
+          and broiler breeder nutritional programming</strong>. This emerging field examines how the
+          nutritional status of parent birds shapes the epigenetic landscape, immunity, and productive
+          performance of their offspring — a frontier area with enormous implications for Kenyan poultry
+          production systems.
+        </p>
+
+        <p>
+          Beyond broilers, Dr. Maina has conducted landmark research on <strong>Black Soldier Fly Larvae
+          (BSFL) meal</strong> as a sustainable fishmeal replacer in African catfish (<em>Clarias
+          gariepinus</em>) and Nile tilapia (<em>Oreochromis niloticus</em>) diets. His 168-day feeding
+          trials demonstrated that BSFL meal inclusion not only maintains growth performance but improves
+          the proximate composition and essential amino acid profile of fish — a breakthrough for
+          sub-Saharan African aquaculture where conventional fishmeal is expensive and frequently
+          adulterated. He has also contributed original work on Nile crocodile (<em>Crocodylus
+          niloticus</em>) offal meal as a novel protein substrate in Jumbo quail diets — pioneering
+          the use of waste by-products as value-added feed ingredients in Kenya.
+        </p>
+
+        <p>
+          His widely cited review on <strong>eubiotics in non-chicken poultry (NCP) species</strong>
+          — covering quail, turkey, ostrich, waterfowl, and guinea fowl — provides the first
+          consolidated scientific framework for responsible antibiotic reduction across Kenya's
+          diversifying poultry sector. He has additionally published on <strong>Omega-3
+          polyunsaturated fatty acids</strong> (α-linolenic, EPA, and DHA) in livestock and poultry,
+          DHA enrichment of eggs using algal oils, and hydrolysed whole yeast as a prebiotic for
+          broiler breeder pullets — placing AgriNutri Ventures at the intersection of functional
+          nutrition, sustainability, and product quality enhancement.
+        </p>
+
+        <div class="sec-ttl">Core Research Expertise</div>
+        <div class="exp-grid">
+          <div class="exp-chip">🐔 Poultry Nutrition &amp; Physiology</div>
+          <div class="exp-chip">🧬 Nutri-Epigenetics &amp; Programming</div>
+          <div class="exp-chip">🦠 Eubiotics &amp; Gut Health</div>
+          <div class="exp-chip">🪲 Insect Proteins (BSFL)</div>
+          <div class="exp-chip">🐖 Swine Nutrition &amp; Efficiency</div>
+          <div class="exp-chip">🐄 Ruminant &amp; Aquaculture Nutrition</div>
+          <div class="exp-chip">⚗️ Functional Feedstuffs</div>
+          <div class="exp-chip">📊 Experimental &amp; Statistical Design</div>
+        </div>
+
+        <div class="sec-ttl">Academic &amp; Professional Timeline</div>
+        <div class="tl">
+          <div class="tl-item">
+            <div class="tl-dot">🏢</div>
+            <div>
+              <span class="tl-yr">Current · Managing Director</span>
+              <span class="tl-role">AgriNutri Ventures Ltd — Nairobi, Kenya</span>
+              <span class="tl-place">Livestock &amp; agribusiness consultancy serving East Africa</span>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">📘</div>
+            <div>
+              <span class="tl-yr">Current · Lecturer</span>
+              <span class="tl-role">Murang'a University of Technology &amp; JKUAT</span>
+              <span class="tl-place">Dept. of Plant and Animal Sciences — Animal nutrition &amp; feed science</span>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">🔬</div>
+            <div>
+              <span class="tl-yr">Postdoctoral Research</span>
+              <span class="tl-role">North-West University — Mmabatho, South Africa</span>
+              <span class="tl-place">Eubiotics, nutri-epigenetics, broiler breeder nutritional programming</span>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">🍁</div>
+            <div>
+              <span class="tl-yr">PhD · 2021–2024</span>
+              <span class="tl-role">University of Guelph — Ontario, Canada</span>
+              <span class="tl-place">PhD Animal Biosciences · Supervisor: Prof. Elijah G. Kiarie</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-ttl">Formal Credentials</div>
+        <ul class="cred">
+          <li><div class="cred-dot">🎓</div><div>PhD in Animal Biosciences — University of Guelph, Canada (Monogastric nutrition, functional feedstuffs, antimicrobial alternatives)</div></li>
+          <li><div class="cred-dot">🔬</div><div>Postdoctoral Fellow — North-West University, South Africa (Eubiotics, nutri-epigenetics, broiler breeder nutrition)</div></li>
+          <li><div class="cred-dot">📘</div><div>Part-time Lecturer — Murang'a University of Technology, Department of Plant and Animal Sciences</div></li>
+          <li><div class="cred-dot">📘</div><div>Part-time Lecturer — Jomo Kenyatta University of Agriculture and Technology (JKUAT)</div></li>
+          <li><div class="cred-dot">🏢</div><div>Managing Director &amp; Chief Scientist — AgriNutri Ventures Ltd, Nairobi, Kenya</div></li>
+          <li><div class="cred-dot">📰</div><div>13+ peer-reviewed publications in Poultry Science, Animal Feed Science &amp; Technology, Aquaculture, and Livestock Science</div></li>
+          <li><div class="cred-dot">🌍</div><div>Research collaborations with ICIPE (ILIPA Programme), University of Guelph, and North-West University</div></li>
+        </ul>
+
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;">
+          <a href="#contact" class="btn btn-p">Book a Consultation</a>
+          <a href="https://www.researchgate.net/profile/Anderson-Maina-2" target="_blank" rel="noopener" class="btn btn-g">ResearchGate Profile ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════ -->
+<section id="services" class="section alt">
+  <div class="container">
+    <div class="srv-intro reveal">
+      <span class="lbl" style="color:var(--amber-light)">What We Do</span>
+      <h2>Multi-Species Nutrition Expertise</h2>
+      <p>From least-cost ration formulation to full experimental trial design — evidence-based, publication-backed solutions across the entire livestock spectrum.</p>
+    </div>
+    <div class="srv-grid">
+
+      <div class="srv-card reveal">
+        <span class="srv-ic">🐔</span>
+        <h3>Poultry Nutrition</h3>
+        <p>Broiler, layer, and breeder nutritional programming grounded in nutri-epigenetic principles. Expertise in specialty protein ingredients, functional feedstuffs, eubiotics, and phytogenics as antimicrobial alternatives. Backed by PhD-level research from the University of Guelph.</p>
+        <div class="tags"><span class="tag">Broilers</span><span class="tag">Layers</span><span class="tag">Breeders</span><span class="tag">Quail &amp; NCP</span><span class="tag">Eubiotics</span></div>
+      </div>
+
+      <div class="srv-card reveal">
+        <span class="srv-ic">🐖</span>
+        <h3>Swine Nutrition</h3>
+        <p>Grow-finish and sow nutrition strategies prioritising feed efficiency, gut microbiome health, and responsible antibiotic reduction. Development of antibiotic-free production protocols using functional feed additives tailored for Kenyan and East African conditions.</p>
+        <div class="tags"><span class="tag">Grow-Finish</span><span class="tag">Sow Feeding</span><span class="tag">Gut Health</span><span class="tag">Antibiotic-Free</span></div>
+      </div>
+
+      <div class="srv-card reveal">
+        <span class="srv-ic">🐟</span>
+        <h3>Aquaculture Nutrition</h3>
+        <p>Tilapia and African catfish feed formulation using Black Soldier Fly Larvae (BSFL) meal and novel protein substrates. Proven capacity to reduce dependence on expensive, adulterated fishmeal while maintaining or improving growth, carcass composition, and essential amino acid profiles.</p>
+        <div class="tags"><span class="tag">Tilapia</span><span class="tag">Catfish</span><span class="tag">BSFL</span><span class="tag">Fishmeal Replacement</span></div>
+      </div>
+
+      <div class="srv-card reveal">
+        <span class="srv-ic">🐄</span>
+        <h3>Ruminant Nutrition</h3>
+        <p>Dairy and beef cattle, sheep and goat ration balancing with focus on rumen health, methane mitigation strategies, and integration of locally available feed resources in Kenya and East Africa. Practical solutions for both smallholder and commercial enterprises.</p>
+        <div class="tags"><span class="tag">Dairy</span><span class="tag">Beef</span><span class="tag">Sheep &amp; Goats</span><span class="tag">Methane Mitigation</span></div>
+      </div>
+
+      <div class="srv-card reveal">
+        <span class="srv-ic">🧪</span>
+        <h3>Feed Formulation &amp; Analysis</h3>
+        <p>Least-cost ration formulation for commercial feed millers and farm operations. Proximate and amino acid analysis interpretation, feed safety evaluation, ingredient substitution strategies, omega-3 enrichment programmes, and DHA-enriched egg production protocols.</p>
+        <div class="tags"><span class="tag">Least-Cost</span><span class="tag">Proximate Analysis</span><span class="tag">Omega-3 Enrichment</span><span class="tag">Feed Safety</span></div>
+      </div>
+
+      <div class="srv-card reveal">
+        <span class="srv-ic">📊</span>
+        <h3>Research Design &amp; Training</h3>
+        <p>Full-cycle research support — experimental design, statistical analysis (SAS, R), data interpretation, manuscript preparation for peer review, and capacity building workshops for farmers, extension officers, students, and agri-SMEs across East Africa.</p>
+        <div class="tags"><span class="tag">Trial Design</span><span class="tag">SAS / R</span><span class="tag">Manuscript Writing</span><span class="tag">Capacity Building</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     WHY US
+═══════════════════════════════════════ -->
+<section class="section pale">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto 1rem">
+      <span class="lbl">Why AgriNutri Ventures</span>
+      <h2>Research Rigour. Practical Impact.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-ic">🎓</div>
+        <h3>Globally Trained</h3>
+        <p>Doctoral and postdoctoral training across Canada and South Africa, combined with deep Kenya-based experience — delivering world-class science for local realities.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-ic">📰</div>
+        <h3>Publication-Backed</h3>
+        <p>Every recommendation is grounded in 13+ peer-reviewed publications in internationally indexed journals — not opinion, but evidence.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-ic">🌍</div>
+        <h3>East Africa First</h3>
+        <p>Deep understanding of local feed ingredient availability, cost structures, regulatory frameworks, and operational realities of smallholder and commercial producers alike.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-ic">🔬</div>
+        <h3>Innovative Ingredients</h3>
+        <p>Pioneering use of BSFL meal, novel protein substrates, functional feedstuffs, and eubiotics — reducing costs, antibiotic dependence, and enhancing product quality simultaneously.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-ic">🤝</div>
+        <h3>Institutional Network</h3>
+        <p>Active collaborations with University of Guelph, North-West University, and ICIPE — giving clients access to a broader scientific ecosystem.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-ic">⚡</div>
+        <h3>Multi-Species Capacity</h3>
+        <p>Rare ability to advise across poultry, swine, aquaculture, and ruminants from a single highly qualified expert — reducing the need for multiple consultants.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PUBLICATIONS
+═══════════════════════════════════════ -->
+<section id="publications" class="section">
+  <div class="container">
+    <span class="lbl">Selected Research</span>
+    <h2 style="max-width:600px">Peer-Reviewed Publications</h2>
+    <p style="color:var(--muted);margin-top:.7rem;max-width:640px;font-size:1rem;">
+      A selection of Dr. Maina's published work. Visit his ResearchGate or Google Scholar profiles for the complete list.
+    </p>
+    <div class="pub-grid">
+
+      <div class="pub reveal">
+        <div class="pub-jnl">Poultry Science</div>
+        <div class="pub-ttl">Comparative impact of partial replacement of soybean meal with select specialty protein ingredients in broiler chicken starter feeding program on growth, organ, intestinal, plasma, and litter attributes to 49 days of age</div>
+        <div class="pub-meta">Maina A.N., Kiarie E.G. et al.</div>
+      </div>
+
+      <div class="pub reveal">
+        <div class="pub-jnl">Poultry Science / Review</div>
+        <div class="pub-ttl">A review on the potential use of eubiotics in non-chicken poultry (NCP) species: quail, turkey, ostrich, waterfowl, and guinea fowl</div>
+        <div class="pub-meta">Maina A.N. et al. — PMC Open Access · 2025</div>
+      </div>
+
+      <div class="pub reveal">
+        <div class="pub-jnl">Aquaculture / Animal Feed Science</div>
+        <div class="pub-ttl">Black soldier fly larvae meal as a fishmeal replacer in African catfish (Clarias gariepinus): growth performance, proximate composition, and essential amino acid profiles from a 168-day feeding trial</div>
+        <div class="pub-meta">Maina A.N., Osuga I.M., Munga L.K. et al.</div>
+      </div>
+
+      <div class="pub reveal">
+        <div class="pub-jnl">Poultry Science</div>
+        <div class="pub-ttl">Effects of feeding broiler breeder pullets hydrolyzed whole yeast (HY) from hatch to 22 weeks of age on egg production, egg quality, and fatty acid profiles in eggs and tissues</div>
+        <div class="pub-meta">Maina A.N., Kiarie E.G. et al.</div>
+      </div>
+
+      <div class="pub reveal">
+        <div class="pub-jnl">Journal of Animal Science / Review</div>
+        <div class="pub-ttl">Omega-3 polyunsaturated fatty acids in livestock and poultry nutrition: dietary sources, metabolism, and enrichment of animal-derived products including eggs</div>
+        <div class="pub-meta">Maina A.N. et al.</div>
+      </div>
+
+      <div class="pub reveal">
+        <div class="pub-jnl">Livestock Science / Novel Ingredients</div>
+        <div class="pub-ttl">Utilisation of Nile crocodile (Crocodylus niloticus) offal meal waste by-products as a novel protein substrate in the formulation of diets for Jumbo quail</div>
+        <div class="pub-meta">Maina A.N. et al.</div>
+      </div>
+
+    </div>
+    <div class="pub-cta">
+      <a href="https://www.researchgate.net/profile/Anderson-Maina-2" target="_blank" rel="noopener" class="btn btn-p">Full List on ResearchGate ↗</a>
+      <a href="https://scholar.google.com/citations?user=169XcfoAAAAJ" target="_blank" rel="noopener" class="btn btn-g">Google Scholar ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════ -->
+<section id="contact" class="section alt">
+  <div class="container">
+    <div class="contact-wrap">
+
+      <!-- Info Column -->
+      <div class="c-info reveal">
+        <span class="lbl" style="color:var(--amber-light)">Get in Touch</span>
+        <h2>Request a Consultation</h2>
+        <p>
+          Whether you are a smallholder farmer, commercial feed manufacturer, agribusiness, research
+          institution, or NGO — AgriNutri Ventures Ltd is ready to help you optimise animal nutrition
+          outcomes through evidence-based, cost-effective strategies. Dr. Maina responds to all enquiries
+          personally within 48 hours.
+        </p>
+        <div class="c-items">
+          <div class="c-item">
+            <div class="c-ic">📍</div>
+            <div>
+              <strong>Location</strong>
+              <span>Nairobi, Kenya &mdash; serving all of East Africa</span>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-ic">📞</div>
+            <div>
+              <strong>Phone / WhatsApp</strong>
+              <a href="tel:+254725857357">+254 725 857 357</a>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-ic">✉️</div>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:njorogemaina45@gmail.com">njorogemaina45@gmail.com</a>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-ic">🔬</div>
+            <div>
+              <strong>Research Profiles</strong>
+              <span>
+                <a href="https://www.researchgate.net/profile/Anderson-Maina-2" target="_blank" rel="noopener" style="color:var(--amber-light)">ResearchGate</a>
+                &nbsp;·&nbsp;
+                <a href="https://scholar.google.com/citations?user=169XcfoAAAAJ" target="_blank" rel="noopener" style="color:var(--amber-light)">Google Scholar</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Column -->
+      <div class="c-form-card reveal">
+        <h3>Send an Enquiry</h3>
+        <div id="success-msg">
+          ✅ Your message has been sent! Dr. Maina will respond within 48 hours.
+        </div>
+
+        <form
+          id="contact-form"
+          action="https://formspree.io/f/mykbkrjq"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="New AgriNutri Ventures Website Enquiry">
+          <input type="text"   name="_gotcha"  style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="f-row">
+            <div class="f-grp">
+              <label for="f-name">Full Name *</label>
+              <input type="text" id="f-name" name="name" placeholder="Your full name" required>
+            </div>
+            <div class="f-grp">
+              <label for="f-email">Email Address *</label>
+              <input type="email" id="f-email" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+
+          <div class="f-row">
+            <div class="f-grp">
+              <label for="f-phone">Phone / WhatsApp</label>
+              <input type="tel" id="f-phone" name="phone" placeholder="+254 7XX XXX XXX">
+            </div>
+            <div class="f-grp">
+              <label for="f-org">Organisation / Farm</label>
+              <input type="text" id="f-org" name="organisation" placeholder="Optional">
+            </div>
+          </div>
+
+          <div class="f-grp full">
+            <label for="f-svc">Service of Interest *</label>
+            <select id="f-svc" name="service" required>
+              <option value="">— Select a service —</option>
+              <option>Poultry Nutrition Consulting</option>
+              <option>Swine Nutrition Consulting</option>
+              <option>Aquaculture Nutrition (Tilapia / Catfish)</option>
+              <option>Ruminant Nutrition (Dairy / Beef / Goats)</option>
+              <option>Feed Formulation &amp; Least-Cost Ration Design</option>
+              <option>BSFL / Novel Protein Ingredient Integration</option>
+              <option>Research Design, Data Analysis &amp; Manuscript Support</option>
+              <option>Capacity Building &amp; Training Workshop</option>
+              <option>Other / General Enquiry</option>
+            </select>
+          </div>
+
+          <div class="f-grp full">
+            <label for="f-msg">Message *</label>
+            <textarea id="f-msg" name="message" placeholder="Describe your needs, herd/flock size, challenges you are facing, or any questions for Dr. Maina..." required></textarea>
+          </div>
+
+          <div class="f-grp full" style="margin-bottom:0;">
+            <button type="submit" class="btn btn-p" style="width:100%;justify-content:center;padding:1rem 2rem;font-size:.9rem;">
+              Send Enquiry to Dr. Maina →
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer id="ftr">
+  <div class="container">
+    <div class="ftr-grid">
+      <div class="ftr-brand">
+        <span style="font-family:'Cormorant Garamond',serif;color:#fff;font-size:1.65rem;font-weight:700;display:block;">AgriNutri Ventures Ltd</span>
+        <p>A premier animal nutrition and agribusiness consultancy led by Dr. Anderson N. Maina, PhD. Serving farmers, feed manufacturers, research institutions, and agribusinesses across Kenya and East Africa with evidence-based nutrition solutions.</p>
+        <p style="margin-top:.85rem;line-height:2;">
+          📞 <a href="tel:+254725857357" style="color:var(--amber-light);">+254 725 857 357</a><br>
+          ✉️ <a href="mailto:njorogemaina45@gmail.com" style="color:var(--amber-light);">njorogemaina45@gmail.com</a>
+        </p>
+      </div>
+      <div class="ftr-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#services">Poultry Nutrition</a></li>
+          <li><a href="#services">Swine Nutrition</a></li>
+          <li><a href="#services">Aquaculture Nutrition</a></li>
+          <li><a href="#services">Ruminant Nutrition</a></li>
+          <li><a href="#services">Feed Formulation</a></li>
+          <li><a href="#services">Research &amp; Training</a></li>
+        </ul>
+      </div>
+      <div class="ftr-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Dr. Maina</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="https://www.researchgate.net/profile/Anderson-Maina-2" target="_blank" rel="noopener">ResearchGate</a></li>
+          <li><a href="https://scholar.google.com/citations?user=169XcfoAAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr-btm">
+      <span>&copy; <span id="yr"></span> AgriNutri Ventures Ltd. Nairobi, Kenya. All rights reserved.</span>
+      <span>Dr. Anderson N. Maina, PhD &mdash; Principal Consultant</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════ -->
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  const hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', () => {
+    hdr.classList.toggle('stuck', window.scrollY > 60);
+  }, { passive: true });
+
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); ro.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  const form = document.getElementById('contact-form');
+  const successMsg = document.getElementById('success-msg');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        successMsg.style.display = 'block';
+        form.reset();
+        form.closest('.c-form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        const data = await res.json();
+        if (data.errors) {
+          alert('Error: ' + data.errors.map(e => e.message).join(', '));
+        } else {
+          alert('There was a problem. Please email njorogemaina45@gmail.com or call +254 725 857 357 directly.');
+        }
+      }
+    } catch (err) {
+      alert('Network error. Please email njorogemaina45@gmail.com or call +254 725 857 357.');
+    }
+
+    btn.textContent = 'Send Enquiry to Dr. Maina →';
+    btn.disabled = false;
+  });
+</script>
+
+</body>
+</html>
